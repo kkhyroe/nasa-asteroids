@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  flex-flow: column;
+  gap: 8px;
+}
+
+
+.header menu {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.header menu li {
+  list-style: none;
+  display: inline;
+}
+
+.header menu input {
+  display: none;
+}
+
+.header menu label {
+  cursor: pointer;
+}
+
+.header menu input:checked + label {
+  text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.header menu li + li:before {
+  content: "\00a0|\00a0"
+}
