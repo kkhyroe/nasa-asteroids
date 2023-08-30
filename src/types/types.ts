@@ -4,7 +4,6 @@ export type ApproachData = {
   close_approach_date: string;
   close_approach_date_full: string;
   relative_velocity: {
-    // kilometers_per_second: string;
     kilometers_per_hour: string;
   };
   orbiting_body: string;
