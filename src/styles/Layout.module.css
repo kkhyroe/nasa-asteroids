@@ -3,4 +3,30 @@
   display: flex;
   flex-flow: column;
   gap: 7px;
+  height: 100vh;
+}
+
+.container > div {
+  display: flex;
+  gap: 58px;
+  justify-content: center;
+}
+
+.image {
+  position: fixed;
+  right: 70%;
+  height: 85vh;
+  width: auto;
+}
+
+@media (max-width: 1248px) {
+  .image {
+    right: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .image {
+    right: 90%;
+  }
 }

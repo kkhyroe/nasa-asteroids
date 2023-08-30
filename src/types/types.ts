@@ -1,31 +1,29 @@
 export type Measure = "km" | "lunar";
 
-export type Asteroid = {
+export type ApproachData = {
+  close_approach_date: string;
+  close_approach_date_full: string;
+  relative_velocity: {
+    // kilometers_per_second: string;
+    kilometers_per_hour: string;
+  };
+  orbiting_body: string;
+  miss_distance: {
+    kilometers: string;
+    lunar: string;
+  };
+};
+
+export type AsteroidData = {
   id: string;
   name: string;
-  // absolute_magnitude_h: number;
   is_potentially_hazardous_asteroid: boolean;
-  // is_sentry_object: boolean;
-  // neo_reference_id: string;
-  // nasa_jpl_url: string;
-  // links: {
-  //   self: string;
-  // };
   estimated_diameter: {
     meters: {
       estimated_diameter_max: number;
     };
   };
-  close_approach_data: {
-    // close_approach_date: string;
-    // close_approach_date_full: string;
-    // epoch_date_close_approach: number;
-    // orbiting_body: string;
-    miss_distance: {
-      kilometers: string;
-      lunar: string;
-    };
-  }[];
+  close_approach_data: ApproachData[];
 };
 
 export type FeedData = {
@@ -36,6 +34,6 @@ export type FeedData = {
     self: string;
   };
   near_earth_objects: {
-    [date: string]: Asteroid[];
+    [date: string]: AsteroidData[];
   };
 };

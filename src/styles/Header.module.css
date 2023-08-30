@@ -9,6 +9,7 @@
 }
 
 .title {
+  width: fit-content;
   color: #F86600;
   font-family: 'Passion One', sans-serif;
   font-size: 32px;
@@ -16,6 +17,7 @@
 }
 
 .description {
+  width: fit-content;
   font-size: 16px;
   line-height: 24px;
 }

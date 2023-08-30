@@ -1,11 +1,18 @@
 import styles from "@/styles/Scroll.module.css";
 import { useState } from "react";
-import { FeedData, Measure } from "@/types/types";
-import Asteroid from "@/components/Asteroid/Asteroid";
+import { AsteroidData, Measure } from "@/types/types";
+import Asteroid from "@/components/Asteroid";
 
-const Scroll = ({ data }: { data: FeedData }) => {
+const Scroll = ({
+  data,
+  cart,
+  addToCart,
+}: {
+  data: [string, AsteroidData[]][];
+  cart: AsteroidData[];
+  addToCart: (asteroid: AsteroidData) => void;
+}) => {
   const [measure, setMeasure] = useState<Measure>("km");
-  console.log(data);
 
   return (
     <div className={styles.container}>
@@ -34,13 +41,14 @@ const Scroll = ({ data }: { data: FeedData }) => {
           </li>
         </menu>
       </div>
-      {Object.entries(data.near_earth_objects).map((item) =>
+      {data.map((item) =>
         item[1].map((asteroid) => (
           <Asteroid
             key={asteroid.id}
-            date={item[0]}
             asteroid={asteroid}
             measure={measure}
+            addToCart={addToCart}
+            inCart={cart.map((item) => item.id).includes(asteroid.id)}
           />
         )),
       )}

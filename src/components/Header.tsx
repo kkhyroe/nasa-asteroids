@@ -1,8 +1,11 @@
 import styles from "@/styles/Header.module.css";
+import Link from "next/link";
 
 const Header = () => (
   <header className={styles.container}>
-    <span className={styles.title}>ARMAGEDDON 2023</span>
+    <Link href="/" className={styles.title}>
+      ARMAGEDDON 2023
+    </Link>
     <span className={styles.description}>
       ООО “Команда им. Б. Уиллиса”.
       <br />
