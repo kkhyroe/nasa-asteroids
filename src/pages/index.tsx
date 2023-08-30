@@ -19,7 +19,7 @@ const Home = ({ initialData }: { initialData: FeedData }) => {
   const fetchData = async () => {
     setIsLoading(true);
     await axios
-      .get(next)
+      .get(next.replace(/^http:\/\//i, "https://"))
       .then((res: { data: FeedData }) => {
         const nextLink = res.data.links.next;
         setNext(nextLink);
