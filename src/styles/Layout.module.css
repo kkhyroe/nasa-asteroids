@@ -8,25 +8,21 @@
 
 .container > div {
   display: flex;
+  position: relative;
   gap: 58px;
   justify-content: center;
 }
 
 .image {
   position: fixed;
-  right: 70%;
+  right: 0;
+  margin-right: 80%;
   height: 85vh;
   width: auto;
 }
 
-@media (max-width: 1248px) {
-  .image {
-    right: 80%;
-  }
-}
-
 @media (max-width: 768px) {
   .image {
-    right: 90%;
+    margin-right: 90%;
   }
 }
