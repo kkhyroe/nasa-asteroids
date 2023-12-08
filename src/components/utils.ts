@@ -4,7 +4,7 @@ import { AsteroidData } from "@/types/types";
 
 export const axiosNasa = axios.create({
   baseURL: "https://api.nasa.gov/neo/rest/v1/",
-  params: { api_key: "yxkve9I6rnE1C9ev57MB3OIvwWM5mmKKFlEamaXW" },
+  params: { api_key: process.env.API_KEY },
 });
 
 export const declination = (

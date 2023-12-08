@@ -6,20 +6,22 @@ import button from "@/styles/Button.module.css";
 
 const CartCard = ({ cart }: { cart: AsteroidData[] }) =>
   !!cart.length && (
-    <div className={styles.container}>
-      <div>
-        <h3>Корзина</h3>
-        <span>
-          {cart.length}{" "}
-          {declination(cart.length, ["астероид", "астероида", "астероидов"])}
-        </span>
+    <section>
+      <div className={styles.container}>
+        <div>
+          <h3>Корзина</h3>
+          <span>
+            {cart.length}{" "}
+            {declination(cart.length, ["астероид", "астероида", "астероидов"])}
+          </span>
+        </div>
+        <Link href="/cart">
+          <button type="button" className={button.container}>
+            Отправить
+          </button>
+        </Link>
       </div>
-      <Link href="/cart">
-        <button type="button" className={button.container}>
-          Отправить
-        </button>
-      </Link>
-    </div>
+    </section>
   );
 
 export default CartCard;

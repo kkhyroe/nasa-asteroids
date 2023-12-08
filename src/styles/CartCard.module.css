@@ -10,6 +10,7 @@
   line-height: 24px;
   width: fit-content;
   height: fit-content;
+  z-index: 3;
 }
 
 .container button {
@@ -28,6 +29,5 @@
     width: 100%;
     flex-flow: row;
     justify-content: space-between;
-    /*width: 100vh;*/
   }
 }

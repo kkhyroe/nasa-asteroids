@@ -10,7 +10,7 @@ const AsteroidLookup = ({ lookupData }: { lookupData: AsteroidData }) => {
   return (
     <Layout>
       <div className={styles.container}>
-        <div>
+        <section>
           <AsteroidPicture
             isBig={
               lookupData.estimated_diameter.meters.estimated_diameter_max > 100
@@ -30,7 +30,7 @@ const AsteroidLookup = ({ lookupData }: { lookupData: AsteroidData }) => {
               м
             </div>
           </div>
-        </div>
+        </section>
         {lookupData.is_potentially_hazardous_asteroid && (
           <div className={styles.warning}>⚠️Опасен</div>
         )}

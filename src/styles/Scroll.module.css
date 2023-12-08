@@ -3,6 +3,7 @@
   flex-flow: column;
   gap: 24px;
   max-width: 402px;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {

@@ -6,7 +6,7 @@
   height: 100vh;
 }
 
-.container > div {
+.container > main {
   display: flex;
   position: relative;
   gap: 58px;
@@ -19,6 +19,7 @@
   margin-right: 80%;
   height: 85vh;
   width: auto;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {

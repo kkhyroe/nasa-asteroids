@@ -15,7 +15,7 @@ const Scroll = ({
   const [measure, setMeasure] = useState<Measure>("km");
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.header}>
         <h1>Ближайшие подлёты астероидов</h1>
         <menu>
@@ -52,7 +52,7 @@ const Scroll = ({
           />
         )),
       )}
-    </div>
+    </section>
   );
 };
 

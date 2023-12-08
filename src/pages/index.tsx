@@ -4,38 +4,38 @@ import Layout from "@/components/Layout";
 import Scroll from "@/components/Scroll";
 import { AsteroidData, FeedData } from "@/types/types";
 import { useEffect, useState } from "react";
-import styles from "@/styles/Home.module.css";
 import CartCard from "@/components/CartCard";
 import axios from "axios";
+import Loader from "@/components/Loader";
 
 const Home = ({ initialData }: { initialData: FeedData }) => {
   const { cart, addToCart, setCart } = useCart();
-  const [next, setNext] = useState<string>(initialData.links.next);
+  const [nextLink, setNextLink] = useState<string>(initialData.links.next);
   const [asteroids, setAsteroids] = useState<[string, AsteroidData[]][]>(
     Object.entries(initialData.near_earth_objects),
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    await axios
-      .get(next.replace(/^http:\/\//i, "https://"))
-      .then((res: { data: FeedData }) => {
-        const nextLink = res.data.links.next;
-        setNext(nextLink);
-        setAsteroids((prevData) => {
-          const newData = Object.entries(res.data.near_earth_objects);
-
-          if (!prevData.map((item) => item[0]).includes(newData[0][0])) {
-            return [...prevData, ...newData];
-          } else return prevData;
-        });
-        setIsLoading(false);
-      })
-      .catch(() => setIsLoading(false));
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      await axios
+        .get(nextLink.replace(/^http:\/\//i, "https://"))
+        .then((res: { data: FeedData }) => {
+          const nextLink = res.data.links.next;
+          setNextLink(nextLink);
+          setAsteroids((prevData) => {
+            const newData = Object.entries(res.data.near_earth_objects);
+
+            if (!prevData.map((item) => item[0]).includes(newData[0][0])) {
+              return [...prevData, ...newData];
+            } else return prevData;
+          });
+        })
+        .catch((e) => console.error(e))
+        .finally(() => setIsLoading(false));
+    };
+
     const handleScroll = () => {
       if (
         window.innerHeight + window.scrollY >=
@@ -59,19 +59,16 @@ const Home = ({ initialData }: { initialData: FeedData }) => {
 
   return (
     <Layout>
-      <div className={styles.container}>
-        <Scroll data={asteroids} cart={cart} addToCart={addToCart} />
-        <div>
-          <CartCard cart={cart} />
-        </div>
-      </div>
+      <Scroll data={asteroids} cart={cart} addToCart={addToCart} />
+      <CartCard cart={cart} />
+      <Loader isLoading={isLoading} />
     </Layout>
   );
 };
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const date = new Date().toISOString().split("T")[0];
 
   const initialData: FeedData = await axiosNasa

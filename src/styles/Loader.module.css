@@ -1,0 +1,19 @@
+.container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        background: black;
+        z-index: 4;
+        height: fit-content;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+}
